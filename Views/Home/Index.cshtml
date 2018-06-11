@@ -2,19 +2,28 @@
     <h1>Welcome to the Middle School Helper 2000!</h1>
     <p>Type the lines that you need to write, say how many lines you need to write, and choose at least five fonts. The MiddleSchoolHelper2000 will then print out for you in a manner that will appear as if it was handwritten!</p>
 
-    <img src="/wwwroot/images/MiddleSchoolHelper2000.jpg" alt="Foxtrot Comic">
-    <h3>The Inspiration</h3>
+    <h3>Instructions:</h3>
+    <p>Step 1: Write your line in the text box.</p>
+    <p>Step 2: Choose how many lines you need written. Choosing a large number of lines may require more time to process, depending on your internet connection.)</p>
+    <p>P.S. The program looks for periods (.), exclamation points (!), or question marks (?) in order to determine when to begin a new line. If you don't put any of those symbols, the result will just be one long line.
+    </p>
+    
+    <br><br>
+
+    <img src="images/MiddleSchoolHelper2000.jpg" alt="Foxtrot Comic">
+    <p>The Inspiration</>
+    <br>
 
             @Html.Raw(@ViewBag.CompletedString )    
 
     <form action="SubmitLines" method="POST">
-    <textarea name="lines" id="lines" cols="30" rows="10"></textarea>
+    <label for="lines">Type your line here</label>
+    <br>
+    <textarea name="lines" id="lines" cols="30" rows="10" placeholder="Type your line into here (only once!)"></textarea>
     <br><br>
 
-    <label for="numLines">How many lines?
-        
-    <input type="number" step="1" name="numLines" id="numLines">
-    </label>
+    <label for="numLines">How many lines?</label>
+    <input type="number" step="1" name="numLines" id="numLines" placeholder="1">
     <br><br>
 
     <!-- <label for="font1">Font 1</label>
