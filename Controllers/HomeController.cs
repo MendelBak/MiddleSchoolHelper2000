@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Threading;
-using Microsoft.Office.Interop.Word;
+// using Word = Microsoft.Office.Interop.Word;
 
 
 namespace MiddleSchoolHelper.Controllers
@@ -22,7 +22,6 @@ namespace MiddleSchoolHelper.Controllers
 
         [HttpPost]
         [Route("SubmitLines")]
-        // The way that I'm passing in the response from the form is terrible. Ideally I should use a View Model. I'm on the train now so don't want to do that, but I definitely need to change how this works.
         public IActionResult SubmitLines(string lines, int numLines = 1)
         {
             // Function scope variable declarations
@@ -37,12 +36,18 @@ namespace MiddleSchoolHelper.Controllers
             Random rand = new Random();
 
             // Add various fonts into FontList (fonts are imported in the _Layout.cshtml page header)
-            FontList.Add("Shadows Into Light, cursive");
-            FontList.Add("Shadows Into Light Two, cursive");
-            FontList.Add("Give You Glory, cursive");
-            FontList.Add("The Girl Next Door, cursive");
+            FontList.Add("Calibri");
+            FontList.Add("Comic Sans");
+            FontList.Add("Ink Free");
+            FontList.Add("Segoe Print");
+            FontList.Add("Courier");
+            // FontList.Add("Shadows Into Light, cursive");
+            // FontList.Add("Shadows Into Light Two, cursive");
+            // FontList.Add("Give You Glory, cursive");
+            // FontList.Add("The Girl Next Door, cursive");
 
             // This loop performs the actual creation of the string depending on the num of lines the user set.
+            // It chooses a random font based on the prepolulated list.
             for (int j = 0; j < numLines; j++)
             {
                 for (var k = 0; k < lines.Length; k++)
@@ -56,6 +61,28 @@ namespace MiddleSchoolHelper.Controllers
                 }
             }
             ViewBag.CompletedString = CompletedString.ToString();
+
+
+            // This code takes the CompletedString and puts it into a new Word document. However, it does not parse the HTML and CSS to formattd .docx text. Need to do some more digging to understand how.
+
+            // object oMissing = System.Reflection.Missing.Value;
+            // object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+            
+            // //Start Word and create a new document.
+            // Word._Application oWord;
+            // Word._Document oDoc;
+            // oWord = new Word.Application();
+            // oWord.Visible = true;
+            // oDoc = oWord.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+            
+            // //Insert a paragraph at the beginning of the document.
+            // Word.Paragraph oPara1;
+            // oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+            // oPara1.Range.Text = CompletedString.ToString();
+            // // oPara1.Range.Font.Bold = 1;
+            // oPara1.Format.SpaceAfter = 24;    //24 pt spacing after paragraph.
+            // oPara1.Range.InsertParagraphAfter();
+
             return View("Index");
         }
     }

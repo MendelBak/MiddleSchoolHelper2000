@@ -7,8 +7,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Word = Microsoft.Office.Interop.Word;
-using Microsoft.Office.Interop.Word;
 
 namespace MiddleSchoolHelper
 {
