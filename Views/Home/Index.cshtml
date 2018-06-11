@@ -1,0 +1,39 @@
+﻿<div>   
+    <h1>Welcome to the Middle School Helper 2000!</h1>
+    <p>Type the lines that you need to write, say how many lines you need to write, and choose at least five fonts. The MiddleSchoolHelper2000 will then print out for you in a manner that will appear as if it was handwritten!</p>
+
+    <img src="/wwwroot/images/MiddleSchoolHelper2000.jpg" alt="Foxtrot Comic">
+    <h3>The Inspiration</h3>
+
+            @Html.Raw(@ViewBag.CompletedString )    
+
+    <form action="SubmitLines" method="POST">
+    <textarea name="lines" id="lines" cols="30" rows="10"></textarea>
+    <br><br>
+
+    <label for="numLines">How many lines?
+        
+    <input type="number" step="1" name="numLines" id="numLines">
+    </label>
+    <br><br>
+
+    <!-- <label for="font1">Font 1</label>
+    <input type="checkbox" name="font1" id="font1" value="font1">
+    <br>
+    <label for="font2">Font 2</label>
+    <input type="checkbox" name="font2" id="font2" value="font2">
+    <br>
+    <label for="font3">Font 3</label>
+    <input type="checkbox" name="font3" id="font3" value="font3">
+    <br>
+    <label for="font4">Font 4</label>
+    <input type="checkbox" name="font4" id="font4" value="font5">
+    <br>
+    <label for="font5">Font 5</label>
+    <input type="checkbox" name="font5" id="font5" value="font5">
+    <br> -->
+
+    <button type="submit">Go Play!</button>
+
+    </form>
+</div>
