@@ -36,27 +36,30 @@ namespace MiddleSchoolHelper.Controllers
             Random rand = new Random();
 
             // Add various fonts into FontList (fonts are imported in the _Layout.cshtml page header)
-            FontList.Add("Calibri");
-            FontList.Add("Comic Sans");
             FontList.Add("Ink Free");
-            FontList.Add("Segoe Print");
-            FontList.Add("Courier");
-            // FontList.Add("Shadows Into Light, cursive");
-            // FontList.Add("Shadows Into Light Two, cursive");
-            // FontList.Add("Give You Glory, cursive");
-            // FontList.Add("The Girl Next Door, cursive");
+            FontList.Add("Shadows Into Light, cursive");
+            FontList.Add("Shadows Into Light Two, cursive");
+            FontList.Add("Give You Glory, cursive");
+            FontList.Add("The Girl Next Door, cursive");
 
             // This loop performs the actual creation of the string depending on the num of lines the user set.
             // It chooses a random font based on the prepolulated list.
             for (int j = 0; j < numLines; j++)
             {
+                double RandomLineHeight = rand.Next(0, 15);
+                // Divide line height to get decimal value.
+                RandomLineHeight /= 10;
+
+                double RandomRotate = rand.Next(-9, 9);
+                RandomRotate /= 10;
+                CompletedString.Append($"<div style=\"line-height:{RandomLineHeight}; -moz-transform: rotate({RandomRotate}deg); -webkit-transform: rotate({RandomRotate}deg);\">");
                 for (var k = 0; k < lines.Length; k++)
                 {
-                    RandomFont = rand.Next(0, 4);
-                    CompletedString.Append($"<span style=\"font-family:{FontList[RandomFont]}\">" + lines[k] + "</span>");
+                    RandomFont = rand.Next(0, 5);
+                    CompletedString.Append($"<span style=\"font-family:{FontList[RandomFont]}; font-size: 20px; font-kerning: none; \">" + lines[k] + "</span>");
                     if (lines[k].ToString() == "." || lines[k].ToString() == "!" || lines[k].ToString() == "?")
                     {
-                        CompletedString.Append("<br/>");
+                        CompletedString.Append("</div><br>");
                     }
                 }
             }
